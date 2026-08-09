@@ -1,0 +1,161 @@
+[
+  {
+    "id": "focus",
+    "name": "Bicicleta Focus",
+    "price": 580000,
+    "link": "",
+    "description": "No vas a encontrar algo así en Argentina.",
+    "condition": "Aceptable, requiere acondicionamiento.",
+    "dimensions": "",
+    "status": "disponible",
+    "images": [
+      "img/focus-1.webp",
+      "img/focus-2.webp",
+      "img/focus-3.webp",
+      "img/focus-4.webp",
+      "img/focus-5.webp",
+      "img/focus-6.webp"
+    ]
+  },
+  {
+    "id": "mesa",
+    "name": "Mesa Escandinava Paraíso",
+    "price": 200000,
+    "link": "https://www.nordico.com.ar/productos/mesa-escandinava-paraiso/?variant=1230001307",
+    "description": "Base y patas: Paraíso macizo. Espesor de las patas 4 cm. Tapa: Enchapada en Paraíso. Acabado: Laca poliuretánica satinado.",
+    "condition": "Muy buen estado",
+    "dimensions": "140x80",
+    "status": "disponible",
+    "images": [
+      "img/mesa-1.webp",
+      "img/mesa-2.webp",
+      "img/mesa-3.webp",
+      "img/mesa-4.webp",
+      "img/mesa-5.webp",
+      "img/mesa-6.webp"
+    ]
+  },
+  {
+    "id": "mesitas",
+    "name": "Mesitas de luz vintage",
+    "price": 120000,
+    "link": "",
+    "description": "Mesas de luz vintage restauradas.",
+    "condition": "Muy buen estado",
+    "dimensions": "55x36 (49 altura)",
+    "status": "disponible",
+    "images": [
+      "img/mesitas-1.webp",
+      "img/mesitas-2.webp",
+      "img/mesitas-3.webp",
+      "img/mesitas-4.webp",
+      "img/mesitas-5.webp",
+      "img/mesitas-6.webp",
+      "img/mesitas-7.webp"
+    ]
+  },
+  {
+    "id": "rack",
+    "name": "Aparador con tapa de marmol",
+    "price": 420000,
+    "link": "",
+    "description": "Aparador enchapado con paraíso. Tapa de marmol negro.",
+    "condition": "Buen estado. El marmol tiene rayones superficiales que se pueden restaurar facilmente. El aparador tiene un agujero en la parte trasera y otro que comunica ambos compartimentos. Rayones visbles.",
+    "dimensions": "140x45 (76 altura)",
+    "status": "disponible",
+    "images": [
+      "img/rack-1.webp",
+      "img/rack-2.webp",
+      "img/rack-3.webp",
+      "img/rack-4.webp",
+      "img/rack-5.webp",
+      "img/rack-6.webp",
+      "img/rack-7.webp",
+      "img/rack-8.webp",
+      "img/rack-9.webp",
+      "img/rack-10.webp",
+      "img/rack-11.webp",
+      "img/rack-12.webp",
+      "img/rack-13.webp"
+    ]
+  },
+  {
+    "id": "sillon",
+    "name": "Sillón del Fin Del Mundo (Wood Market)",
+    "price": 600000,
+    "link": "https://woodmarket.com.ar/products/camastro-simple",
+    "description": "Material: Estructura en madera Petiribí con almohadones en tela a Cotton.",
+    "condition": "La estructura se encuentra en buen estado con las marcas que se pueden ver en las imágenes. Recomendamos cambiar la funda de los almohadones.",
+    "dimensions": "110x90x70H",
+    "status": "disponible",
+    "images": [
+      "img/sillon-1.webp",
+      "img/sillon-2.webp",
+      "img/sillon-3.webp",
+      "img/sillon-4.webp",
+      "img/sillon-5.webp",
+      "img/sillon-6.webp",
+      "img/sillon-7.webp",
+      "img/sillon-8.webp"
+    ]
+  },
+  {
+    "id": "sofa",
+    "name": "Sillón Esquinero (Wynsy)",
+    "price": 750000,
+    "link": "https://wynsy-sillones.my.canva.site/",
+    "description": "Sillón esquinero en dos módulos. Tela y color: Pana Reta Verde 130-2658-08. Capitoné. Almohadones: 1 placa de asiento - 3 almohadones de respaldo en el modulo de 240 y 2 almohadones en el de 160. Pata Torneada cónicas tono oscuro.",
+    "condition": "Buen estado, recomendamos hacer una buena limpieza de la pana. Con los dos cortecitos visibles de las fotos.",
+    "dimensions": "240x90x160 del lado derecho estando sentado. Módulo 1: 150x90. Módulo 2: 160x90.",
+    "status": "disponible",
+    "images": [
+      "img/sofa-1.webp",
+      "img/sofa-2.webp",
+      "img/sofa-3.webp",
+      "img/sofa-4.webp",
+      "img/sofa-5.webp",
+      "img/sofa-6.webp",
+      "img/sofa-7.webp",
+      "img/sofa-8.webp",
+      "img/sofa-9.webp",
+      "img/sofa-10.webp",
+      "img/sofa-11.webp",
+      "img/sofa-12.webp",
+      "img/sofa-13.webp"
+    ]
+  },
+  {
+    "id": "soporte",
+    "name": "Portabicicletas",
+    "price": 40000,
+    "link": "https://www.mercadolibre.com.ar/porta-bicicleta-4-soportes-para-auto-2-bicis-con-o-sin-baul/up/MLAU255301419?pdp_filters=item_id%3AMLA1199910394&matt_tool=89488245&ua=6_RR3GHwY6UT15WavfaKbdwvzJB2F7xswb1RmJbA7qRO5hk#origin=share&sid=share&wid=MLA1199910394&action=copy",
+    "description": "Portabicicletas para baul. Es para 2 bicis. Reforzado..",
+    "condition": "Buen estado",
+    "dimensions": "",
+    "status": "disponible",
+    "images": [
+      "img/soporte-1.webp",
+      "img/soporte-2.webp",
+      "img/soporte-3.webp"
+    ]
+  },
+  {
+    "id": "venzo",
+    "name": "Bicicleta Venzo Vero 650B",
+    "price": 390000,
+    "link": "https://biciclub.com/venzo-vero-650b-nino/",
+    "description": "Mountain bike basada en un cuadro de aluminio en rodado 27.5 y una horquilla SR Suntour con bloqueo. Equipada con transmisión Shimano Acera de 27 velocidades, cubiertas importadas y frenos a disco mecánicos Shimano.",
+    "condition": "Aceptable, requiere acondicionamiento.",
+    "dimensions": "",
+    "status": "disponible",
+    "images": [
+      "img/venzo-1.webp",
+      "img/venzo-2.webp",
+      "img/venzo-3.webp",
+      "img/venzo-4.webp",
+      "img/venzo-5.webp",
+      "img/venzo-6.webp",
+      "img/venzo-7.webp"
+    ]
+  }
+]
