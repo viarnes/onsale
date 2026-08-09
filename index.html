@@ -85,10 +85,12 @@
           </svg>
         </button>
 
-        <div class="gallery-panel relative bg-neutral-100 md:w-[55%] md:shrink-0">
+        <div
+          class="gallery-panel relative flex items-center justify-center bg-neutral-100 md:w-[55%] md:shrink-0 md:min-h-[min(92vh,720px)]"
+        >
           <div
             id="gallery-track"
-            class="gallery-track flex aspect-[3/4] max-h-[50vh] snap-x snap-mandatory overflow-x-auto md:max-h-[92vh] md:aspect-auto md:h-full"
+            class="gallery-track flex w-full aspect-[3/4] max-h-[50vh] snap-x snap-mandatory overflow-x-auto md:max-h-[92vh] md:aspect-auto md:h-full md:min-h-[min(92vh,720px)]"
             tabindex="0"
             aria-label="Galería de imágenes"
           ></div>
@@ -210,6 +212,8 @@
         </div>
       </div>
     </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <script src="app.js" type="module"></script>
   </body>

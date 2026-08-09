@@ -26,12 +26,14 @@ const dialogDimensions = document.getElementById("dialog-dimensions");
 const dialogDescription = document.getElementById("dialog-description");
 const dialogLink = document.getElementById("dialog-link");
 const dialogWhatsapp = document.getElementById("dialog-whatsapp");
+const toastEl = document.getElementById("toast");
 
 /** @type {Array<any>} */
 let products = [];
 let currentProduct = null;
 let currentImageIndex = 0;
 let ignoreHashChange = false;
+let toastTimer = null;
 
 function formatPrice(price) {
   return priceFormatter.format(price);
@@ -52,6 +54,46 @@ function truncate(text, max = 80) {
   return `${text.slice(0, max).trim()}…`;
 }
 
+function productUrl(productId) {
+  const url = new URL(location.href);
+  url.hash = productId;
+  return url.toString();
+}
+
+function showToast(message) {
+  if (!toastEl) return;
+  toastEl.textContent = message;
+  toastEl.classList.add("is-visible");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toastEl.classList.remove("is-visible");
+  }, 2000);
+}
+
+async function copyProductLink(productId, button) {
+  const url = productUrl(productId);
+  try {
+    await navigator.clipboard.writeText(url);
+  } catch {
+    const input = document.createElement("input");
+    input.value = url;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    input.remove();
+  }
+
+  showToast("Enlace copiado");
+  if (button) {
+    button.classList.add("is-copied");
+    button.setAttribute("aria-label", "Enlace copiado");
+    setTimeout(() => {
+      button.classList.remove("is-copied");
+      button.setAttribute("aria-label", "Compartir enlace");
+    }, 1600);
+  }
+}
+
 function renderGrid() {
   gridEl.innerHTML = "";
 
@@ -66,6 +108,16 @@ function renderGrid() {
     const eager = index < 4;
 
     card.innerHTML = `
+      <button
+        type="button"
+        class="share-btn absolute right-2 top-2 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-neutral-800 shadow-sm transition hover:bg-white hover:scale-105 active:scale-95"
+        aria-label="Compartir enlace"
+        data-share="${product.id}"
+      >
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+        </svg>
+      </button>
       <button
         type="button"
         class="block w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2"
@@ -141,7 +193,7 @@ function setGalleryIndex(index, { scroll = true } = {}) {
         behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
           ? "auto"
           : "smooth",
-        inline: "start",
+        inline: "center",
         block: "nearest",
       });
     }
@@ -192,6 +244,18 @@ function buildGallery(product) {
   galleryTrack.scrollLeft = 0;
 }
 
+function centerGallery() {
+  galleryTrack.scrollLeft = 0;
+  const first = galleryTrack.children[0];
+  if (first) {
+    first.scrollIntoView({
+      behavior: "auto",
+      inline: "center",
+      block: "nearest",
+    });
+  }
+}
+
 function openProduct(product, { updateHash = true } = {}) {
   currentProduct = product;
 
@@ -222,6 +286,12 @@ function openProduct(product, { updateHash = true } = {}) {
     dialogEl.showModal();
   }
 
+  // After layout, center the first image in the gallery viewport
+  requestAnimationFrame(() => {
+    centerGallery();
+    requestAnimationFrame(centerGallery);
+  });
+
   if (updateHash) {
     ignoreHashChange = true;
     history.replaceState(null, "", `#${product.id}`);
@@ -246,8 +316,16 @@ function closeProduct({ updateHash = true } = {}) {
   }
 }
 
-function openFromHash() {
-  const id = decodeURIComponent(location.hash.replace(/^#/, ""));
+function productIdFromUrl() {
+  const fromHash = decodeURIComponent(location.hash.replace(/^#/, "")).trim();
+  if (fromHash) return fromHash;
+
+  const fromQuery = new URLSearchParams(location.search).get("product");
+  return fromQuery ? fromQuery.trim() : "";
+}
+
+function openFromUrl() {
+  const id = productIdFromUrl();
   if (!id) {
     if (dialogEl.open) closeProduct({ updateHash: false });
     return;
@@ -299,6 +377,14 @@ async function init() {
   renderGrid();
 
   gridEl.addEventListener("click", (event) => {
+    const shareBtn = event.target.closest("[data-share]");
+    if (shareBtn) {
+      event.preventDefault();
+      event.stopPropagation();
+      copyProductLink(shareBtn.dataset.share, shareBtn);
+      return;
+    }
+
     const button = event.target.closest("[data-open]");
     if (!button) return;
     const product = products.find((p) => p.id === button.dataset.open);
@@ -337,10 +423,10 @@ async function init() {
 
   window.addEventListener("hashchange", () => {
     if (ignoreHashChange) return;
-    openFromHash();
+    openFromUrl();
   });
 
-  openFromHash();
+  openFromUrl();
 }
 
 init();
