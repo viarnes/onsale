@@ -99,8 +99,10 @@ function renderGrid() {
 
   products.forEach((product, index) => {
     const sold = product.status === "vendido";
+    const reserved = product.status === "reservado";
+    const stateClass = sold ? "card-sold" : reserved ? "card-reservado" : "";
     const card = document.createElement("article");
-    card.className = `product-card group relative overflow-hidden rounded-xl bg-neutral-200 shadow-sm ring-1 ring-black/5 transition duration-300 hover:shadow-lg hover:ring-black/10 ${sold ? "card-sold" : ""}`;
+    card.className = `product-card group relative overflow-hidden rounded-xl bg-neutral-200 shadow-sm ring-1 ring-black/5 transition duration-300 hover:shadow-lg hover:ring-black/10 ${stateClass}`;
     card.style.animationDelay = `${index * 60}ms`;
     card.dataset.id = product.id;
 
@@ -136,7 +138,7 @@ function renderGrid() {
           />
           ${
             product.status !== "disponible"
-              ? `<span class="absolute left-2 top-2 z-10 rounded-full px-2.5 py-0.5 text-xs font-medium shadow-sm ${statusBadgeClass(product.status)}">${STATUS_LABELS[product.status] || product.status}</span>`
+              ? `<span class="status-badge absolute left-2 top-2 z-10 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide shadow-md ring-1 ring-black/5 ${statusBadgeClass(product.status)}">${STATUS_LABELS[product.status] || product.status}</span>`
               : ""
           }
           <div class="card-overlay absolute inset-x-0 bottom-0 flex flex-col justify-end p-3 pt-16 text-white md:p-4">

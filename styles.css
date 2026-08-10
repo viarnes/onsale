@@ -129,8 +129,8 @@
 }
 
 .badge-reservado {
-  background: #fffbeb;
-  color: #b45309;
+  background: #f59e0b;
+  color: #ffffff;
 }
 
 .badge-vendido {
@@ -144,6 +144,27 @@
 
 .card-sold img {
   filter: grayscale(0.35);
+}
+
+.card-reservado {
+  opacity: 0.75;
+}
+
+.card-reservado img {
+  filter: grayscale(0.5) brightness(0.95);
+}
+
+.card-reservado::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.08) 0 12px,
+    rgba(245, 158, 11, 0) 12px 24px
+  );
+  pointer-events: none;
+  z-index: 5;
 }
 
 .share-btn {
